@@ -1,4 +1,5 @@
 import { db } from "@/db/connection";
+import { eq } from "drizzle-orm";
 import { trademarkRegistration } from "@/db/schema";
 
 const getTrademarkRegistrations = async (req, res) => {
@@ -33,8 +34,9 @@ const updateTrademarkRegistration = async (req, res) => {
     const [updatedTrademarkRegistration] = await db
       .update(trademarkRegistration)
       .set({ brand, owner, status })
-      .where(trademarkRegistration.id === Number(id))
+      .where(eq(trademarkRegistration.id, Number(id)))
       .returning();
+
     res.status(200).json(updatedTrademarkRegistration);
   } catch (error) {
     console.error({ error });
@@ -46,7 +48,7 @@ const deleteTrademarkRegistration = async (req, res) => {
   const { id } = req.query;
 
   try {
-    await db.delete(trademarkRegistration).where(trademarkRegistration.id === Number(id));
+    await db.delete(trademarkRegistration).where(eq(trademarkRegistration.id, Number(id)));
     res.status(204).end();
   } catch (error) {
     console.error({ error });
