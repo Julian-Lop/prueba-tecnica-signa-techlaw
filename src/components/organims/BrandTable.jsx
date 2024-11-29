@@ -50,7 +50,7 @@ export const BrandTable = ({ data, onEdit }) => {
   ];
 
   return (
-    <div className="bg-white shadow rounded-lg p-0 lg:p-4 overflow-x-auto">
+    <div className="bg-white shadow rounded-lg p-0 lg:p-4 overflow-x-auto max-h-[60vh] overflow-y-auto">
       {data && data.length && <Table
         columns={columns}
         data={data}
