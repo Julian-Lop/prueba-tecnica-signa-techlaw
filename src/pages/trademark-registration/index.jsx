@@ -7,7 +7,7 @@ import { getAllTrademarkRegistrations } from '@/features/trademarkRegistration/a
 // * Components
 import { DashboardTemplate } from '@/components/templates/DashboardTemplate'
 
-export default function index() {
+export default function Index() {
   const dispatch = useDispatch()
   const { data, status } = useSelector(state => state.trademarkRegistration)
 

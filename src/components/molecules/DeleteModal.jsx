@@ -14,7 +14,7 @@ export const DeleteModal = ({ isOpen, onClose, onDelete, data }) => {
           <FaExclamationTriangle className="text-yellow-500 text-4xl" />
         </div>
         <h2 className="text-xl font-semibold text-gray-800 mb-4">¿Estás seguro?</h2>
-        <p className="text-gray-600 mb-6">Este registro "{data.brand}"" será eliminado permanentemente.</p>
+        <p className="text-gray-600 mb-6">Este registro &quot;{data.brand}&quot; será eliminado permanentemente.</p>
         <div className="flex justify-center space-x-4">
           <Button
             onClick={onClose}
