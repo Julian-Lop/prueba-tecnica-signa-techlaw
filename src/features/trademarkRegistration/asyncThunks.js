@@ -1,30 +1,15 @@
+import axiosInstance from "@/api/axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
 export const getAllTrademarkRegistrations = createAsyncThunk('getAllTrademarkRegistrations', async () => {
   try {
-    return {
-      data: [
-        {
-          id: 1,
-          brand: 'Marca 1',
-          owner: 'Titular 1',
-          status: true
-        },
-        {
-          id: 2,
-          brand: 'Marca 2',
-          owner: 'Titular 2',
-          status: false
-        },
-        {
-          id: 3,
-          brand: 'Marca 3',
-          owner: 'Titular 3',
-          status: true
-        }
-      ],
-      error: false
+    const response = await axiosInstance.get('/trademark-registration')
+
+    if (response.status == 200) {
+      return { data: response.data, error: false }
     }
+
+    return { data: null, error: response.status }
   } catch (error) {
     return { data: null, error }
   }
@@ -33,43 +18,52 @@ export const getAllTrademarkRegistrations = createAsyncThunk('getAllTrademarkReg
 export const createTrademarkRegistration = createAsyncThunk('createTrademarkRegistration', async (TrademarkRegistration) => {
 
   try {
+    const response = await axiosInstance.post('/trademark-registration', TrademarkRegistration)
+
+    if (response.status == 201) {
+      return { data: response.data, error: false }
+    }
     return {
-      data: {
-        id: 4,
-        brand: TrademarkRegistration.brand,
-        owner: TrademarkRegistration.owner,
-        status: true
-      },
-      error: false
+      data: null,
+      error: response.status
     }
   } catch (error) {
-    return error
+    return { data: null, error }
   }
 })
 
 export const updateTrademarkRegistrationById = createAsyncThunk('updateTrademarkRegistrationById', async (TrademarkRegistration) => {
+  const { id, ...body } = TrademarkRegistration
+
+  console.log({ body })
+
   try {
+    const response = await axiosInstance.put('/trademark-registration/' + id, body)
+
+    if (response.status == 200) {
+      return { data: response.data, error: false }
+    }
     return {
-      data: {
-        id: TrademarkRegistration.id,
-        brand: TrademarkRegistration.brand,
-        owner: TrademarkRegistration.owner,
-        status: TrademarkRegistration.status
-      },
-      error: false
+      data: null,
+      error: response.status
     }
   } catch (error) {
-    return error
+    return { data: null, error }
   }
 })
 
 export const deleteTrademarkRegistrationById = createAsyncThunk('deleteTrademarkRegistrationById', async (id) => {
   try {
+    const response = await axiosInstance.delete('/trademark-registration/' + id)
+
+    if (response.status == 204) {
+      return { id, error: false }
+    }
     return {
       id,
-      error: false
+      error: response.status
     }
   } catch (error) {
-    return error
+    return { id: null, error }
   }
 })

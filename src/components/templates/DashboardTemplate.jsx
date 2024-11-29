@@ -30,6 +30,7 @@ export const DashboardTemplate = ({ data }) => {
 
   const submit = (data) => {
     dispatch(updateTrademarkRegistrationById(data))
+    closeForm()
   }
 
   return (
@@ -61,10 +62,7 @@ export const DashboardTemplate = ({ data }) => {
               />
               <BrandForm
                 initialData={initialData}
-                onClose={(data) => {
-                  submit(data);
-                  closeForm();
-                }}
+                onClose={(data) => submit(data)}
               />
             </div>
           </div>

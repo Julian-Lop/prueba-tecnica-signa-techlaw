@@ -17,8 +17,8 @@ export const FormTemplate = () => {
   const dispatch = useDispatch()
 
   const submit = (data) => {
-    router.push('/trademark-registration/')
     dispatch(createTrademarkRegistration(data))
+    router.push('/trademark-registration/')
   }
 
   return (

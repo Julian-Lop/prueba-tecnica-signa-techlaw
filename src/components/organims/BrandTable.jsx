@@ -38,7 +38,7 @@ export const BrandTable = ({ data, onEdit }) => {
     {
       key: 'status',
       title: 'Estado',
-      dataType: DataType.Boolean,
+      dataType: DataType.String,
       style: { textAlign: 'center' },
       width: 200
     },

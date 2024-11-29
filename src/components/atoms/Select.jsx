@@ -14,8 +14,8 @@ export const Select = (props) => {
         <option value="" disabled selected>
           Selecciona el estado
         </option>
-        <option value='true'>Activo</option>
-        <option value='false'>Inactivo</option>
+        <option value='active'>Activo</option>
+        <option value='inactive'>Inactivo</option>
       </select>
     </div>
   )

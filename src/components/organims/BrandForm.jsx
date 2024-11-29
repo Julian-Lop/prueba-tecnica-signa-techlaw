@@ -83,7 +83,7 @@ export const BrandForm = ({ initialData = false, onClose }) => {
                   <>
                     <br />
                     <Select
-                      {...register('status', { setValueAs: (value) => value === 'true' })}
+                      {...register('status')}
                     />
                   </>
                   :
