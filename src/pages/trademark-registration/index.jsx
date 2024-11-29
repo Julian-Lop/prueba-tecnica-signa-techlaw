@@ -13,6 +13,7 @@ export default function Index() {
 
   useEffect(() => {
     dispatch(getAllTrademarkRegistrations())
+    // eslint-disable-next-line
   }, [])
 
   return (

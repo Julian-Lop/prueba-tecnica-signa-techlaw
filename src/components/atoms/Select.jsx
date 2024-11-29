@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Select = (props) => {
+const Select = React.forwardRef((props, ref) => {
   return (
     <div>
       <label htmlFor="status" className="block text-lg font-semibold text-gray-800">
@@ -8,6 +8,7 @@ export const Select = (props) => {
       </label>
       <select
         {...props}
+        ref={ref}
         className="block w-56 px-4 py-2 mt-2 text-gray-600 font-semibold border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         aria-label="Seleccionar opción"
       >
@@ -19,4 +20,9 @@ export const Select = (props) => {
       </select>
     </div>
   )
-}
+})
+
+Select.displayName = 'Select';
+
+export { Select };
+

@@ -48,6 +48,7 @@ export const BrandForm = ({ initialData = false, onClose }) => {
           {currentStep === 1 && (
             <FormStep step={1}>
               <Input
+                id="brand"
                 label="Marca"
                 {...register('brand', { required: 'Este campo es obligatorio' })}
                 placeholder="Ingresa el nombre de la marca"
@@ -60,6 +61,7 @@ export const BrandForm = ({ initialData = false, onClose }) => {
           {currentStep === 2 && (
             <FormStep step={2}>
               <Input
+                id="owner"
                 label="Titular"
                 {...register('owner', { required: 'Este campo es obligatorio' })}
                 placeholder="Ingresa el nombre del titular"
